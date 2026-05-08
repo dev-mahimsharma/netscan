@@ -1,0 +1,65 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Format Code",
+            "type": "shell",
+            "command": "clang-format",
+            "args": [
+                "-i",
+                "src\\*.c",
+                "include\\*.h",
+                "tests\\*.c"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "build",
+                "-G",
+                "Ninja",
+                "-DCMAKE_C_COMPILER=gcc"
+            ],
+            "dependsOn": "Format Code",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake Build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build"
+            ],
+            "dependsOn": "CMake Configure",
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "label": "Run NetLens",
+            "type": "shell",
+            "command": ".\\netlens.exe",
+            "args": [
+                "127.0.0.1",
+                "127.0.0.1"
+            ],
+            "dependsOn": "CMake Build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true,
+                "focus": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}

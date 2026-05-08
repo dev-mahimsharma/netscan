@@ -1,0 +1,6 @@
+C:/dev/netscan/build/CMakeFiles/netlens_core.dir
+C:/dev/netscan/build/CMakeFiles/netlens.dir
+C:/dev/netscan/build/CMakeFiles/test_netlens.dir
+C:/dev/netscan/build/CMakeFiles/test.dir
+C:/dev/netscan/build/CMakeFiles/edit_cache.dir
+C:/dev/netscan/build/CMakeFiles/rebuild_cache.dir

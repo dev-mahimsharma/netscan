@@ -1,47 +1,32 @@
-# NetLens - Multithreaded LAN Scanner in C
+# NetLens
 
-NetLens is a lightweight multithreaded LAN scanner written in C for Windows.  
-It scans devices on your local network, checks common TCP ports, and displays which IP addresses have active services.
+NetLens is a local lab TCP connection checker designed for educational purposes. It helps in learning POSIX sockets, pthreads, command-line parsing, IP address validation, timeout handling, and clean C project architecture.
 
-This project is built to practice low-level networking, sockets, multithreading, synchronization, and Windows API programming.
+## ⚠️ Responsible Use
 
----
+**This tool is strictly for educational purposes and private local lab environments.** 
+It should only be used on private local networks, personal devices, and virtual machines that you own or have explicit permission to test. 
 
-## Features
+It does not include and will not support:
+- Stealth scanning or raw sockets
+- SYN scanning or vulnerability detection
+- Banner grabbing or exploitation
+- Brute forcing or credential testing
+- Public internet scanning
 
-- Scan a local subnet like `192.168.1.1 - 192.168.1.254`
-- Detect open TCP ports
-- Use multithreading for faster scanning
-- Uses Windows Winsock API
-- Uses `CreateThread`, `CRITICAL_SECTION`, and optional condition variables
-- Supports common LAN, development, database, and remote-access ports
-- Clean terminal output
-- Beginner-friendly C codebase
+Please see [docs/responsible_use.md](docs/responsible_use.md) for full details.
 
----
+## Build
 
-## Example Output
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
 
-```txt
-NetLens LAN Scanner
+## Usage
 
-Target subnet: 192.168.1.0/24
-Scanned range: 192.168.1.1 - 192.168.1.254
-Mode: fast
-Threads: 8
-Timeout: 500ms
-
----------------------------------------------------------------
-IP Address       Result       Open Ports
----------------------------------------------------------------
-192.168.1.1      FOUND        80(HTTP), 443(HTTPS)
-192.168.1.5      FOUND        445(SMB)
-192.168.1.12     FOUND        8080(HTTP-ALT)
-192.168.1.23     FOUND        3000(Node), 5173(Vite)
-192.168.1.45     NO RESPONSE  -
----------------------------------------------------------------
-
-Scan complete.
-IPs scanned: 254
-Devices/services found: 4
-Open ports found: 6
+```bash
+./netlens <ip_start> <ip_end>
+```
